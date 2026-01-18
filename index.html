@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Desarrollo de Marca</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 1.25rem;
+            font-weight: normal;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #888;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Filters section */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filters button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 4px;
+        }
+
+        .filters button:hover {
+            background-color: #eee;
+        }
+
+        .filters button.active {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        /* Gallery section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .gallery[data-active="fun"] .fun,
+        .gallery[data-active="street"] .street,
+        .gallery[data-active="premium"] .premium {
+            display: flex;
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+        }
+
+        .item img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .item .info {
+            text-align: center;
+        }
+
+        .item .info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item .info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+            max-width: 80%;
+            max-height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #333;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 2rem 0;
+            }
+
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <h1>Propuesta de Desarrollo de Marca</h1>
+        <h2>Exploración de nombres, conceptos de identidad visual y dirección de marca.</h2>
+        <p>Esta es una selección curada de conceptos de nombre de marca + logo organizados por la personalidad que transmiten a nivel visual.
+        </p>
+    </header>
+
+    <section class="filters">
+        <button data-filter="fun" class="active">🍿🍩 Divertido / Amistoso</button>
+        <button data-filter="street">🔥 Juvenil / Urbano</button>
+        <button data-filter="premium">👑 Moderno </button>
+    </section>
+
+    <main class="gallery" data-active="fun">
+        <!-- Divertido / Amistoso items (divertido) -->
+        <div class="item fun">
+            <img src="/img/amistoso_divertido/FUN_FRIENDLY_churro_pop_co.png" alt="Logo Fun Option 01"
+                onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Opción 01</h3>
+                <p>Nombre de Marca: ChurroPOPCo.</p>
+                <p>Un nombre muy usado en Estados Unidos, suena Atractivo y juguetón para todos los públicos.</p>
+            </div>
+        </div>
+        <div class="item fun">
+            <img src="/img/amistoso_divertido/FUN_FRIENDLY_pop_&_twist.png" alt="Logo Fun Option 02" onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Opción 02</h3>
+                <p>Nombre de Marca: Pop Twist</p>
+                <p>Brillante y alegre.</p>
+            </div>
+        </div>
+        <div class="item fun">
+            <img src="/img/amistoso_divertido/FUN_FRIENDLY_pop_n_churros.png" alt="Logo Fun Option 03"
+                onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Opción 03</h3>
+                <p>Nombre de Marca: Pop'n Churros</p>
+                <p>Explosión divertida de sabores.</p>
+            </div>
+        </div>
+        <div class="item fun">
+            <img src="/img/amistoso_divertido/FUN_FRIENDLY_pop&dip.png" alt="Logo Fun Option 04" onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Opción 04</h3>
+                <p>Nombre de Marca: Pop&Dip</p>
+                <p>Caprichoso y familiar.</p>
+            </div>
+        </div>
+        <div class="item fun">
+            <img src="/img/amistoso_divertido/FUN_FRIENDLY_sweet_pop_corner.png" alt="Logo Fun Option 05"
+                onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Opción 05</h3>
+                <p>Nombre de Marca: Sweet Pop Corner</p>
+                <p>Dulce y acogedor.</p>
+            </div>
+        </div>
+        <div class="item fun">
+            <img src="/img/amistoso_divertido/FUN_FRIENDLY_the_pop&churro_spot.png" alt="Logo Fun Option 06"
+                onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Opción 06</h3>
+                <p>Nombre de Marca: The Pop&Churro Spot</p>
+                <p>Lugar divertido para snacks.</p>
+            </div>
+        </div>
+
+        <!-- Juvenil / Urbano items (joven) -->
+        <div class="item street">
+            <img src="/img/joven/joven_churro_street.png" alt="Logo Street Option 01" onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Opción 01</h3>
+                <p>Nombre de Marca: Churro Street</p>
+                <p>Energía urbana audaz.</p>
+            </div>
+        </div>
+        <div class="item street">
+            <img src="/img/joven/joven_pop_district.png" alt="Logo Street Option 02" onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Opción 02</h3>
+                <p>Nombre de Marca: Pop District</p>
+                <p>Joven y vanguardista.</p>
+            </div>
+        </div>
+
+        <!-- Moderno items (moderno) -->
+        <div class="item premium">
+            <img src="/img/moderno/moderno_pop_twist.jpg" alt="Logo Premium Option 01" onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Opción 01</h3>
+                <p>Nombre de Marca: Pop Twist</p>
+                <p>Elegante y refinado.</p>
+            </div>
+        </div>
+    </main>
+    <footer
+        style="text-align: center; padding: 2rem 0; border-top: 1px solid #ddd; margin-top: 3rem; font-size: 0.9rem; color: #666;">
+        <p>Propuesta preparada por <strong>Ana Carreño</strong></p><p> Especialista Senior en Diseño de Marcas y Desarrollo
+            Creativo.</p>
+        <p>Soluciones profesionales para identidades visuales y estrategias de branding innovadoras. 
+            </p><p> ALCG - Todos los derechos reservados | © 2026
+        </p>
+    </footer>
+
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="" alt="Logo ampliado">
+        </div>
+    </div>
+
+    <script>
+        // Filter functionality
+        const buttons = document.querySelectorAll('.filters button');
+        const gallery = document.querySelector('.gallery');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                gallery.dataset.active = button.dataset.filter;
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+
+        function openModal(src) {
+            modalImg.src = src;
+            modal.classList.add('show');
+        }
+
+        function closeModal(event) {
+            if (event && event.target !== modal && event.target !== document.querySelector('.close')) return;
+            modal.classList.remove('show');
+        }
+
+        // Close on ESC
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
