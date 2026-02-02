@@ -50,6 +50,71 @@
             margin: 0 auto;
         }
 
+        /* Winning proposal section */
+        .winning-proposal {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .winning-proposal h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        .winning-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+            transition: transform 0.2s;
+        }
+
+        .winning-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .winner-button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .winner-button:hover {
+            background-color: #0056b3;
+        }
+
+        .winning-card img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .winning-card .info {
+            text-align: center;
+        }
+
+        .winning-card .info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
         /* Filters section */
         .filters {
             display: flex;
@@ -212,9 +277,24 @@
     <header class="hero">
         <h1>Propuesta de Desarrollo de Marca</h1>
         <h2>Exploración de nombres, conceptos de identidad visual y dirección de marca.</h2>
-        <p>Esta es una selección curada de conceptos de nombre de marca + logo organizados por la personalidad que transmiten a nivel visual.
+        <p>Esta es una selección curada de conceptos de nombre de marca + logo organizados por la personalidad que
+            transmiten a nivel visual.
         </p>
     </header>
+
+    <section class="winning-proposal">
+        <h2>Propuesta Ganadora</h2>
+        <div class="winning-card">
+            <button class="winner-button"
+                onclick="window.location.href='/HeladoPopCo/HeladoPopCo.html'">HeladoPopCo</button>
+            <img src="/HeladoPopCo/img/Logo-2.jpg" alt="Logo HeladoPopCo" onclick="openModal(this.src)">
+            <div class="info">
+                <p>Nombre de Marca: HeladoPopCo.</p>
+                <p>Descripción: Una marca divertida y atractiva que combina helados con toques innovadores, ideal para
+                    un público amplio. Representa frescura, diversión y calidad premium en cada bocado.</p>
+            </div>
+        </div>
+    </section>
 
     <section class="filters">
         <button data-filter="fun" class="active">🍿🍩 Divertido / Amistoso</button>
@@ -234,7 +314,8 @@
             </div>
         </div>
         <div class="item fun">
-            <img src="/img/amistoso_divertido/FUN_FRIENDLY_pop_&_twist.png" alt="Logo Fun Option 02" onclick="openModal(this.src)">
+            <img src="/img/amistoso_divertido/FUN_FRIENDLY_pop_&_twist.png" alt="Logo Fun Option 02"
+                onclick="openModal(this.src)">
             <div class="info">
                 <h3>Opción 02</h3>
                 <p>Nombre de Marca: Pop Twist</p>
@@ -251,7 +332,8 @@
             </div>
         </div>
         <div class="item fun">
-            <img src="/img/amistoso_divertido/FUN_FRIENDLY_pop&dip.png" alt="Logo Fun Option 04" onclick="openModal(this.src)">
+            <img src="/img/amistoso_divertido/FUN_FRIENDLY_pop&dip.png" alt="Logo Fun Option 04"
+                onclick="openModal(this.src)">
             <div class="info">
                 <h3>Opción 04</h3>
                 <p>Nombre de Marca: Pop&Dip</p>
@@ -307,10 +389,12 @@
     </main>
     <footer
         style="text-align: center; padding: 2rem 0; border-top: 1px solid #ddd; margin-top: 3rem; font-size: 0.9rem; color: #666;">
-        <p>Propuesta preparada por <strong>Ana Carreño</strong></p><p> Especialista Senior en Diseño de Marcas y Desarrollo
+        <p>Propuesta preparada por <strong>Ana Carreño</strong></p>
+        <p> Especialista Senior en Diseño de Marcas y Desarrollo
             Creativo.</p>
-        <p>Soluciones profesionales para identidades visuales y estrategias de branding innovadoras. 
-            </p><p> ALCG - Todos los derechos reservados | © 2026
+        <p>Soluciones profesionales para identidades visuales y estrategias de branding innovadoras.
+        </p>
+        <p> ALCG - Todos los derechos reservados | © 2026
         </p>
     </footer>
 

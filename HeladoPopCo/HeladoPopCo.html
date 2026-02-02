@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeladoPopCo - Landing Page</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero img {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Gallery section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .card .info {
+            text-align: center;
+        }
+
+        .card .info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+            max-width: 80%;
+            max-height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #333;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 0;
+            }
+
+            body {
+                padding: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <h1>HeladoPopCo</h1>
+        <img src="img/Logo-2.jpg" alt="Logo HeladoPopCo">
+        <p>Bienvenido a HeladoPopCo, la marca innovadora que combina diversión, frescura y sabores explosivos en helados
+            y snacks. Explora nuestros mockups y visuales para ver cómo llevamos la marca a la vida.</p>
+    </header>
+
+    <main class="gallery">
+        <div class="card">
+            <img src="img/bandera.jpg" alt="Bandera Mockup" onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Bandera</h3>
+                <p>Mockup de bandera con el branding de HeladoPopCo.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/camiseta.jpg" alt="Camiseta Mockup" onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Camiseta</h3>
+                <p>Mockup de camiseta con diseño de la marca.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/delantal.jpg" alt="Delantal Mockup" onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Delantal</h3>
+                <p>Mockup de delantal para personal.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/elementos.jpg" alt="Elementos Mockup" onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Elementos</h3>
+                <p>Mockup de elementos gráficos de la marca.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/gorro.jpg" alt="Gorro Mockup" onclick="openModal(this.src)">
+            <div class="info">
+                <h3>Gorro</h3>
+                <p>Mockup de gorro con logo.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer
+        style="text-align: center; padding: 2rem 0; border-top: 1px solid #ddd; margin-top: 3rem; font-size: 0.9rem; color: #666;">
+        <p>Propuesta preparada por <strong>Ana Carreño</strong></p>
+        <p>Especialista Senior en Diseño de Marcas y Desarrollo Creativo.</p>
+        <p>Soluciones profesionales para identidades visuales y estrategias de branding innovadoras.</p>
+        <p>ALCG - Todos los derechos reservados | © 2026</p>
+    </footer>
+
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="" alt="Imagen ampliada">
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+
+        function openModal(src) {
+            modalImg.src = src;
+            modal.classList.add('show');
+        }
+
+        function closeModal(event) {
+            if (event && event.target !== modal && event.target !== document.querySelector('.close')) return;
+            modal.classList.remove('show');
+        }
+
+        // Close on ESC
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
