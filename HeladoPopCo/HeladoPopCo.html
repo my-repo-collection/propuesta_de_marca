@@ -1,223 +1,355 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HeladoPopCo - Propuesta de Branding</title>
     <style>
-        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f8f8f8;
-            color: #333;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f9f9f9;
+            color: #222;
             line-height: 1.6;
-            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navegación fija */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            z-index: 900;
+            padding: 1rem 1.5rem;
+        }
+
+        .nav-container {
             max-width: 1400px;
             margin: 0 auto;
         }
-        /* Hero section */
+
+        .home-link {
+            color: #222;
+            text-decoration: none;
+            font-weight: 550;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.25s ease;
+        }
+
+        .home-link:hover,
+        .home-link:focus {
+            color: #e94e77;
+            /* color vibrante - puedes cambiarlo */
+        }
+
+        /* Contenedor principal con offset para nav fija */
+        .page-content {
+            flex: 1 0 auto;
+            padding-top: 90px;
+            /* espacio para la barra superior */
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero */
         .hero {
             text-align: center;
-            padding: 4rem 0;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 3rem;
+            padding: 4rem 1rem 5rem;
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 3.5rem;
         }
+
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2rem, 5.5vw, 3rem);
+            margin-bottom: 1.3rem;
+            line-height: 1.15;
         }
+
         .hero img {
-            max-width: 300px;
+            max-width: 320px;
             height: auto;
-            margin-bottom: 1rem;
+            margin: 1.8rem auto;
+            display: block;
         }
+
         .hero p {
-            font-size: 1rem;
-            color: #666;
-            max-width: 800px;
+            max-width: 780px;
             margin: 0 auto;
+            font-size: 1.05rem;
+            color: #555;
         }
-        /* Gallery section */
+
+        /* Galería */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.2rem;
+            margin-bottom: 4rem;
         }
+
         .card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem;
-            transition: transform 0.2s;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
+
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
         }
+
         .card img {
             width: 100%;
             height: auto;
-            object-fit: contain;
-            margin-bottom: 1rem;
+            display: block;
             cursor: pointer;
+            aspect-ratio: 4/3;
+            object-fit: contain;
+            background: #fafafa;
         }
+
         .card .info {
+            padding: 1.3rem;
             text-align: center;
         }
-        .card .info h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+
+        .card h3 {
+            font-size: 1.18rem;
+            margin-bottom: 0.7rem;
         }
-        .card .info p {
-            font-size: 0.9rem;
+
+        .card p {
+            font-size: 0.94rem;
             color: #666;
         }
+
+        /* Footer */
+        footer {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 3.5rem 1.5rem 2.5rem;
+            background: #f0f0f0;
+            border-top: 1px solid #ddd;
+            color: #555;
+            font-size: 0.94rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
         /* Modal */
         .modal {
             display: none;
             position: fixed;
+            inset: 0;
             z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             justify-content: center;
             align-items: center;
-            transition: opacity 0.3s;
+            padding: 2rem;
         }
+
         .modal.show {
             display: flex;
-            opacity: 1;
         }
+
         .modal-content {
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 8px;
             position: relative;
-            max-width: 80%;
-            max-height: 80%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
         }
+
         .modal-content img {
             max-width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
+            max-height: 85vh;
+            display: block;
         }
+
         .close {
             position: absolute;
-            top: 10px;
+            top: 16px;
             right: 20px;
-            color: #333;
-            font-size: 2rem;
-            font-weight: bold;
+            font-size: 2.6rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: background 0.2s;
         }
+
         .close:hover {
-            color: #000;
+            background: rgba(0, 0, 0, 0.8);
         }
-        /* Responsive design */
+
+        /* Responsive */
         @media (max-width: 768px) {
+            .page-content {
+                padding-top: 80px;
+            }
+
             .hero {
-                padding: 2rem 0;
+                padding: 3rem 1rem 4rem;
             }
-            body {
-                padding: 1rem;
-            }
+
             .gallery {
                 grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .top-nav {
+                padding: 0.9rem 1rem;
             }
         }
     </style>
 </head>
+
 <body>
-    <header class="hero">
-        <h1>Identidad Visual y Despliegue de Marca: HeladoPopCo</h1>
-        <img src="img/Logo-2.jpg" alt="Logo HeladoPopCo">
-        <p>La propuesta visual de HeladoPopCo nace de la intersección entre la nostalgia del snack clásico y la explosión de frescura moderna. El siguiente despliegue busca tangibilizar la esencia de la marca en puntos de contacto clave, garantizando una identidad coherente, vibrante y altamente diferenciadora en el mercado. A continuación, presentamos la integración del sistema gráfico en diversos soportes estratégicos.</p>
-    </header>
-    <main class="gallery">
-        <div class="card">
-            <img src="img/bandera.jpg" alt="Impacto en Punto de Venta" onclick="openModal(this.src)">
-            <div class="info">
-                <h3>Impacto en Punto de Venta (Banderola exterior)</h3>
-                <p>Visualización de marca en gran formato para máxima visibilidad en exteriores.</p>
-            </div>
+
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="home-link">← Volver al Portafolio</a>
         </div>
-        <div class="card">
-            <img src="img/camiseta.jpg" alt="Indumentaria de Marca" onclick="openModal(this.src)">
-            <div class="info">
-                <h3>Indumentaria de Marca (Merchandising)</h3>
-                <p>Aplicación del logotipo en textiles, reforzando el sentido de pertenencia y estilo de vida.</p>
+    </nav>
+
+    <div class="page-content">
+
+        <header class="hero">
+            <h1>Identidad Visual y Despliegue de Marca: HeladoPopCo</h1>
+            <img src="img/Logo-2.jpg" alt="Logo HeladoPopCo">
+            <p>La propuesta visual de HeladoPopCo nace de la intersección entre la nostalgia del snack clásico y la
+                explosión de frescura moderna. El siguiente despliegue busca tangibilizar la esencia de la marca en
+                puntos de contacto clave, garantizando una identidad coherente, vibrante y altamente diferenciadora en
+                el mercado. A continuación, presentamos la integración del sistema gráfico en diversos soportes
+                estratégicos.</p>
+        </header>
+
+        <main class="gallery">
+
+            <div class="card">
+                <img src="img/bandera.jpg" alt="Impacto en Punto de Venta" onclick="openModal(this.src)">
+                <div class="info">
+                    <h3>Impacto en Punto de Venta (Banderola exterior)</h3>
+                    <p>Visualización de marca en gran formato para máxima visibilidad en exteriores.</p>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img src="img/delantal.jpg" alt="Uniformidad y Experiencia de Cliente" onclick="openModal(this.src)">
-            <div class="info">
-                <h3>Uniformidad y Experiencia de Cliente</h3>
-                <p>Coherencia visual para el personal de servicio, elevando el profesionalismo en el punto de atención.</p>
+
+            <div class="card">
+                <img src="img/camiseta.jpg" alt="Indumentaria de Marca" onclick="openModal(this.src)">
+                <div class="info">
+                    <h3>Indumentaria de Marca (Merchandising)</h3>
+                    <p>Aplicación del logotipo en textiles, reforzando el sentido de pertenencia y estilo de vida.</p>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img src="img/elementos.jpg" alt="Assets y Recursos Gráficos" onclick="openModal(this.src)">
-            <div class="info">
-                <h3>Assets y Recursos Gráficos</h3>
-                <p>Desglose de iconografía y logotipos secundarios que componen el ecosistema visual.</p>
+
+            <div class="card">
+                <img src="img/delantal.jpg" alt="Uniformidad y Experiencia de Cliente" onclick="openModal(this.src)">
+                <div class="info">
+                    <h3>Uniformidad y Experiencia de Cliente</h3>
+                    <p>Coherencia visual para el personal de servicio, elevando el profesionalismo en el punto de
+                        atención.</p>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img src="img/gorro.jpg" alt="Accesorios Corporativos" onclick="openModal(this.src)">
-            <div class="info">
-                <h3>Accesorios Corporativos</h3>
-                <p>Complemento de branding funcional para el posicionamiento de marca en entornos dinámicos.</p>
+
+            <div class="card">
+                <img src="img/elementos.jpg" alt="Assets y Recursos Gráficos" onclick="openModal(this.src)">
+                <div class="info">
+                    <h3>Assets y Recursos Gráficos</h3>
+                    <p>Desglose de iconografía y logotipos secundarios que componen el ecosistema visual.</p>
+                </div>
             </div>
-        </div>
-    </main>
-    <footer
-        style="text-align: center; padding: 2rem 0; border-top: 1px solid #ddd; margin-top: 3rem; font-size: 0.9rem; color: #666;">
-        <p>Propuesta preparada por <strong>Ana Carreño</strong></p>
-        <p>Especialista Senior en Diseño de Marca y Desarrollo Creativo.</p>
-        <p>Soluciones profesionales para identidades visuales y estratégicas de alto impacto.</p>
-        <p>ALC. Todos los derechos reservados. © 2026</p>
-        <p>Esta propuesta es una base estratégica diseñada para escalar. Cada elemento ha sido pensado para generar recordación y engagement.</p>
-    </footer>
+
+            <div class="card">
+                <img src="img/gorro.jpg" alt="Accesorios Corporativos" onclick="openModal(this.src)">
+                <div class="info">
+                    <h3>Accesorios Corporativos</h3>
+                    <p>Complemento de branding funcional para el posicionamiento de marca en entornos dinámicos.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>Propuesta preparada por <strong>Ana Carreño</strong></p>
+            <p>Especialista Senior en Diseño de Marca y Desarrollo Creativo.</p>
+            <p>Soluciones profesionales para identidades visuales y estratégicas de alto impacto.</p>
+            <p>ALC. Todos los derechos reservados. © 2026</p>
+            <p style="margin-top: 1.6rem; font-style: italic;">Esta propuesta es una base estratégica diseñada para
+                escalar. Cada elemento ha sido pensado para generar recordación y engagement.</p>
+        </footer>
+
+    </div>
+
+    <!-- Modal -->
     <div id="modal" class="modal" onclick="closeModal(event)">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal()">×</span>
             <img id="modal-img" src="" alt="Imagen ampliada">
         </div>
     </div>
+
     <script>
-        // Modal functionality
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modal-img');
+
         function openModal(src) {
             modalImg.src = src;
             modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
         }
-        function closeModal(event) {
-            if (event && event.target !== modal && event.target !== document.querySelector('.close')) return;
-            modal.classList.remove('show');
-        }
-        // Close on ESC
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                closeModal();
+
+        function closeModal(e) {
+            if (!e || e.target === modal || e.target.classList.contains('close')) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
             }
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
         });
     </script>
+
 </body>
+
 </html>
