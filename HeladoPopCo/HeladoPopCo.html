@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HeladoPopCo - Propuesta de Branding</title>
+    <title>HeladoPopCo - Tu Marca</title>
     <style>
         * {
             margin: 0;
@@ -27,7 +27,6 @@
             flex-direction: column;
         }
 
-        /* Navegación fija */
         .top-nav {
             position: fixed;
             top: 0;
@@ -59,14 +58,11 @@
         .home-link:hover,
         .home-link:focus {
             color: #e94e77;
-            /* color vibrante - puedes cambiarlo */
         }
 
-        /* Contenedor principal con offset para nav fija */
         .page-content {
             flex: 1 0 auto;
             padding-top: 90px;
-            /* espacio para la barra superior */
             padding-left: 1.5rem;
             padding-right: 1.5rem;
             max-width: 1400px;
@@ -74,39 +70,44 @@
             width: 100%;
         }
 
-        /* Hero */
         .hero {
             text-align: center;
-            padding: 4rem 1rem 5rem;
+            padding: 4rem 1rem 3rem;
             border-bottom: 1px solid #e5e5e5;
-            margin-bottom: 3.5rem;
+            margin-bottom: 3rem;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 5.5vw, 3rem);
-            margin-bottom: 1.3rem;
-            line-height: 1.15;
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            margin-bottom: 1rem;
         }
 
         .hero img {
-            max-width: 320px;
+            max-width: 280px;
             height: auto;
-            margin: 1.8rem auto;
+            margin: 1.5rem auto;
             display: block;
         }
 
         .hero p {
-            max-width: 780px;
+            font-size: 1.3rem;
+            color: #333;
+            max-width: 700px;
             margin: 0 auto;
-            font-size: 1.05rem;
-            color: #555;
+            line-height: 1.4;
         }
 
-        /* Galería */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 3rem 0 2rem;
+            color: #e94e77;
+        }
+
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.2rem;
+            gap: 2rem;
             margin-bottom: 4rem;
         }
 
@@ -135,36 +136,43 @@
         }
 
         .card .info {
-            padding: 1.3rem;
+            padding: 1.2rem;
             text-align: center;
         }
 
         .card h3 {
-            font-size: 1.18rem;
-            margin-bottom: 0.7rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
         }
 
         .card p {
-            font-size: 0.94rem;
-            color: #666;
+            font-size: 1rem;
+            color: #555;
         }
 
-        /* Footer */
+        .more-card {
+            background: #fff3f8;
+            border-color: #e94e77;
+        }
+
+        .more-card h3 {
+            color: #e94e77;
+        }
+
         footer {
             flex-shrink: 0;
             text-align: center;
-            padding: 3.5rem 1.5rem 2.5rem;
+            padding: 2.5rem 1.5rem;
             background: #f0f0f0;
             border-top: 1px solid #ddd;
             color: #555;
-            font-size: 0.94rem;
+            font-size: 0.95rem;
         }
 
         footer p {
-            margin: 0.5rem 0;
+            margin: 0.4rem 0;
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -216,25 +224,29 @@
             background: rgba(0, 0, 0, 0.8);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .page-content {
                 padding-top: 80px;
             }
 
             .hero {
-                padding: 3rem 1rem 4rem;
+                padding: 3rem 1rem 2.5rem;
             }
 
             .gallery {
                 grid-template-columns: 1fr;
                 gap: 1.8rem;
             }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin: 2.5rem 0 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 1.9rem;
+                font-size: 2rem;
             }
 
             .top-nav {
@@ -255,67 +267,79 @@
     <div class="page-content">
 
         <header class="hero">
-            <h1>Identidad Visual y Despliegue de Marca: HeladoPopCo</h1>
-            <img src="img/Logo-2.jpg" alt="Logo HeladoPopCo">
-            <p>La propuesta visual de HeladoPopCo nace de la intersección entre la nostalgia del snack clásico y la
-                explosión de frescura moderna. El siguiente despliegue busca tangibilizar la esencia de la marca en
-                puntos de contacto clave, garantizando una identidad coherente, vibrante y altamente diferenciadora en
-                el mercado. A continuación, presentamos la integración del sistema gráfico en diversos soportes
-                estratégicos.</p>
+            <h1>HeladoPopCo – Tu marca se ve así</h1>
+            <img src="/HeladoPopCo/img/Logo-2.jpg" alt="Logo HeladoPopCo">
+            <p><strong></strong>  <strong></strong>.<br>
+                Ideas para destacar tu negocio.</p>
         </header>
 
         <main class="gallery">
 
             <div class="card">
-                <img src="img/bandera.jpg" alt="Impacto en Punto de Venta" onclick="openModal(this.src)">
+                <img src="/HeladoPopCo/img/camiseta.jpg" alt="Camisetas con logo HeladoPopCo" onclick="openModal(this.src)">
                 <div class="info">
-                    <h3>Impacto en Punto de Venta (Banderola exterior)</h3>
-                    <p>Visualización de marca en gran formato para máxima visibilidad en exteriores.</p>
+                    <h3>Camisetas</h3>
+                    <p></p>
                 </div>
             </div>
 
             <div class="card">
-                <img src="img/camiseta.jpg" alt="Indumentaria de Marca" onclick="openModal(this.src)">
+                <img src="/HeladoPopCo/img/gorro.jpg" alt="Gorras personalizadas HeladoPopCo" onclick="openModal(this.src)">
                 <div class="info">
-                    <h3>Indumentaria de Marca (Merchandising)</h3>
-                    <p>Aplicación del logotipo en textiles, reforzando el sentido de pertenencia y estilo de vida.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="img/delantal.jpg" alt="Uniformidad y Experiencia de Cliente" onclick="openModal(this.src)">
-                <div class="info">
-                    <h3>Uniformidad y Experiencia de Cliente</h3>
-                    <p>Coherencia visual para el personal de servicio, elevando el profesionalismo en el punto de
-                        atención.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="img/elementos.jpg" alt="Assets y Recursos Gráficos" onclick="openModal(this.src)">
-                <div class="info">
-                    <h3>Assets y Recursos Gráficos</h3>
-                    <p>Desglose de iconografía y logotipos secundarios que componen el ecosistema visual.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="img/gorro.jpg" alt="Accesorios Corporativos" onclick="openModal(this.src)">
-                <div class="info">
-                    <h3>Accesorios Corporativos</h3>
-                    <p>Complemento de branding funcional para el posicionamiento de marca en entornos dinámicos.</p>
+                    <h3>Gorras personalizadas</h3>
+                    <p></p>
                 </div>
             </div>
 
         </main>
 
+        <h2 class="section-title">Más ideas de branding</h2>
+
+        <main class="gallery">
+
+            <div class="card">
+                <img src="/HeladoPopCo/img/delantal.jpg" alt="Delantal con branding HeladoPopCo"
+                    onclick="openModal(this.src)">
+                <div class="info">
+                    <h3>Delantales</h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="/HeladoPopCo/img/heladoPopCoMenu.jpg" alt="Menú plastificado HeladoPopCo"
+                    onclick="openModal(this.src)">
+                <div class="info">
+                    <h3>Menú plastificado</h3>
+                    <p>Fácil de limpiar – precios claros y atractivo.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="/HeladoPopCo/img/bandera.jpg" alt="Banderola exterior HeladoPopCo" onclick="openModal(this.src)">
+                <div class="info">
+                    <h3>Banderas</h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="/HeladoPopCo/img/elementos.jpg"
+                    alt="Ejemplos de posts para redes HeladoPopCo" onclick="openModal(this.src)">
+                <div class="info">
+                    <h3>Imagenes y animación para redes sociales</h3>
+                    <p></p>
+                </div>
+            </div>
+
+
+
+        </main>
+
         <footer>
-            <p>Propuesta preparada por <strong>Ana Carreño</strong></p>
-            <p>Especialista Senior en Diseño de Marca y Desarrollo Creativo.</p>
-            <p>Soluciones profesionales para identidades visuales y estratégicas de alto impacto.</p>
-            <p>ALC. Todos los derechos reservados. © 2026</p>
-            <p style="margin-top: 1.6rem; font-style: italic;">Esta propuesta es una base estratégica diseñada para
-                escalar. Cada elemento ha sido pensado para generar recordación y engagement.</p>
+            <p>Propuesta por <strong>Ana Carreño</strong></p>
+            <p>Diseño de Marca y Creativo</p>
+            <p>© 2026 – Todos los derechos reservados</p>
         </footer>
 
     </div>
